@@ -1,0 +1,44 @@
+class TooYoungException extends RuntimeException
+{
+ public TooYoungException(String s)
+ {
+ super(s);
+ }
+}
+class TooOldException extends RuntimeException
+{
+ public TooOldException(String s)
+ {
+ super(s);
+ }
+}
+class Exception2 
+{
+ public static void main(String[] args) 
+ {
+ int age = Integer.parseInt(args[0]);
+ try 
+ {
+ if(age < 18)
+ {
+ throw new TooYoungException("You have to wait until you get 18");
+ }
+ else if(age>60)
+ {
+ throw new TooOldException("You are too old");
+ }
+ else
+ {
+ System.out.println("You are eligible");
+ }
+ }
+ catch(TooOldException oe)
+ {
+ System.out.println(oe);
+ }
+ catch(TooYoungException ye)
+ {
+ System.out.println(ye);
+ }
+ }
+}
