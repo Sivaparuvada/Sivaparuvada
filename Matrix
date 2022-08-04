@@ -1,0 +1,82 @@
+import java.util.*;
+class Matrix
+{
+int mat[][],row,col,i,j,k;
+Scanner sc=new Scanner(System.in);
+public Matrix(int row,int col)
+{
+this.row=row;
+this.col=col;
+mat=new int[row][col];
+}
+public void read_Matrix()
+{
+System.out.println("Enter "+(row*col)+" Elements");
+for(i=0;i<row;i++)
+for(j=0;j<col;j++)
+ mat[i][j]=sc.nextInt();
+}
+public void show_Matrix()
+{
+for(i=0;i<row;i++)
+{ for(j=0;j<col;j++)
+{
+ System.out.print(mat[i][j]+" ");
+}
+System.out.println();
+ }
+}
+public Matrix Addition(Matrix m)
+{
+Matrix m3=new Matrix(m.row,m.col);
+for(int i=0;i<m3.row;i++)
+for(int j=0;j<m3.col;j++)
+ m3.mat[i][j]=this.mat[i][j]+m.mat[i][j];
+return m3;
+}
+public Matrix Multiplication(Matrix m)
+{
+if(this.col!=m.row)
+{
+System.out.println("Multiplication is not possible");
+return null;
+}
+else
+{
+Matrix m3=new Matrix(this.row,m.col);
+ for(i=0;i<row;i++)
+{
+for(j=0;j<row;j++)
+{
+m3.mat[i][j]=0;
+for(k=0;k<m.col;k++)
+{
+m3.mat[i][j]=m3.mat[i][j]+this.mat[i][k]*m.mat[k][j];
+}
+}
+}
+return m3;
+}
+}
+public static void main(String args[])
+{
+Matrix m1=new Matrix(2,2);
+Matrix m2=new Matrix(2,2);
+Matrix m3;
+System.out.println("Matrix-1");
+m1.read_Matrix();
+System.out.println("Matrix-2");
+m2.read_Matrix();
+System.out.println("Given Matrix are");
+System.out.println("Matrix-1 is: ");
+m1.show_Matrix();
+System.out.println("\nMatrix-2 is: ");
+m2.show_Matrix();
+System.out.println("\nMatrix addition = ");
+m3=m1.Addition(m2);
+m3.show_Matrix();
+System.out.println("\nMatrix Multiplication =");
+m3=m1.Multiplication(m2);
+m3.show_Matrix();
+}
+}
