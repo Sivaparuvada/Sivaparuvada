@@ -1,0 +1,32 @@
+class Test
+{
+ int x;
+ public Test() // default constructor
+{
+System.out.println("Default Constructor");
+x = 1;
+}
+public Test(int x) // parameterized constructor
+{
+System.out.println("Parameterized constructor");
+this.x = x;
+}
+public Test(Test t) // copy constructor
+{
+this.x = t.x;
+System.out.println("Copy Consturctor");
+}
+void show()
+{
+System.out.println("X: "+x);
+}
+public static void main (String args [])
+{
+Test t1 = new Test(); // default constructor
+Test t2 = new Test(13); // parameterized
+Test t3 = new Test(t2); // copy constructor
+t1.show (); // 1
+t2.show (); // 13
+t3.show (); // 13
+}
+}
