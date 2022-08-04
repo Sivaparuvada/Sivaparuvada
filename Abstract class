@@ -36,3 +36,22 @@ public void Cal_Area()
 a=pi*s1*s1;
 }
 }
+class Mainclass
+{
+public static void main(String args[])throws Exception
+{
+Shape s;
+s=new Rect();
+System.out.println("Rectangle:");
+s.get_Input();
+s.Cal_Area();
+s.show_Area();
+System.out.println("=============");
+s=new Circle();
+System.out.println("Circle:");
+s.get_Input();
+s.Cal_Area();
+s.show_Area();
+System.out.println("=============");
+}
+}
